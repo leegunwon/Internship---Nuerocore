@@ -1,31 +1,10 @@
-from engine.commons.common.simulator_configurator import SimulatorConfigurator
-from engine.commons.common_data.base_info import PathInfo
-from domain.site_progress import SiteProgress
-from commons.parameters import Parameters
-from domain.site_models import SiteModels
-from engine.commons.data_inventory.comDataInv import ComDataInventory
+
 from datetime import datetime
 import plotly.graph_objects as go
 import pandas as pd
 import time
 import os
 import numpy as np
-
-
-def start(dataset_id: str, simulation_prefix: str):
-    Parameters.set_engine_database()
-    t0 =time.time()
-    Parameters.operation_dsp_rules = {"2100": "ORP_RES_REQ"}
-    SimulatorConfigurator.configurate_simulator(dataset_id=dataset_id, simulation_prefix=simulation_prefix)
-    SimulatorConfigurator.run_simulator()
-    # ORP 계산 결과
-    # WH 보시면 Prod 변환 기록이 나올겁니다.
-    # whID: warehouse id, currProd: PS.FROM_PROD_CODE, nextProd: PS.TO_PROD_CODE
-    t1 = time.time()
-    try1 = Analysis()
-    try1.analysis_engine_result_lot_history('target', 'event')
-    t2 = time.time()
-    print(t1-t0, t2-t1)
 
 class Analysis:
 
